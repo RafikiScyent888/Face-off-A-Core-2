@@ -14,12 +14,11 @@ window.FACEOFF_FIREBASE = {
   enabled: false,
 
   config: {
-    apiKey: "PASTE_YOURS_HERE",
-    authDomain: "PASTE_YOURS_HERE",
-    databaseURL: "PASTE_YOURS_HERE",
-    projectId: "PASTE_YOURS_HERE",
-    storageBucket: "PASTE_YOURS_HERE",
-    messagingSenderId: "PASTE_YOURS_HERE",
-    appId: "PASTE_YOURS_HERE"
-  }
+apiKey: "AIzaSyCHgdXXUQngfZNtu9saeE-tJFBWYLUMhUs",
+  authDomain: "face-off-games.firebaseapp.com",
+  projectId: "face-off-games",
+  storageBucket: "face-off-games.firebasestorage.app",
+  messagingSenderId: "126038768937",
+  appId: "1:126038768937:web:aaef27e8c41dd356e9cb38",
+  measurementId: "G-BMBJB3YC3Z"  }
 };

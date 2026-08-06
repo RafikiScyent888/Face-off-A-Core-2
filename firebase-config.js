@@ -1,5 +1,5 @@
 /* =====================================================================
-   FIREBASE CONFIG
+   FIREBASE CONFIG 
    ---------------------------------------------------------------------
    Leave this exactly as-is and the game runs in LOCAL MODE:
    it still works perfectly, but only across tabs on ONE computer
@@ -14,7 +14,7 @@ window.FACEOFF_FIREBASE = {
   enabled: false,
 
   config: {
-apiKey: "AIzaSyCHgdXXUQngfZNtu9saeE-tJFBWYLUMhUs",
+   apiKey: "AIzaSyCHgdXXUQngfZNtu9saeE-tJFBWYLUMhUs",
   authDomain: "face-off-games.firebaseapp.com",
   projectId: "face-off-games",
   storageBucket: "face-off-games.firebasestorage.app",

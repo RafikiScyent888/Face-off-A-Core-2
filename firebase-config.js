@@ -11,14 +11,14 @@
    ===================================================================== */
 
 window.FACEOFF_FIREBASE = {
-  enabled: false,
+  enabled: true,
 
-  config: {
-   apiKey: "AIzaSyCHgdXXUQngfZNtu9saeE-tJFBWYLUMhUs",
+  config: {apiKey: "AIzaSyCHgdXXUQngfZNtu9saeE-tJFBWYLUMhUs",
   authDomain: "face-off-games.firebaseapp.com",
+  databaseURL: "https://face-off-games-default-rtdb.firebaseio.com",
   projectId: "face-off-games",
   storageBucket: "face-off-games.firebasestorage.app",
   messagingSenderId: "126038768937",
   appId: "1:126038768937:web:aaef27e8c41dd356e9cb38",
-  measurementId: "G-BMBJB3YC3Z"  }
-};
+  measurementId: "G-BMBJB3YC3Z"
+  };

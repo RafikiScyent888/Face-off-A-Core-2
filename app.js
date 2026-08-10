@@ -250,6 +250,7 @@ function fbConfigProblem() {
 }
 var FB_PROBLEM = fbConfigProblem();
 var FB_RUNTIME_ERROR = null;
+var PLAYER_STALLED = false;
 
 function makeTransport(room) {
   return liveMode() ? new FirebaseTransport(room) : new LocalTransport(room);
@@ -1754,8 +1755,15 @@ function Player(code, seat) {
         (FB_PROBLEM ? '<div class="fbwarn" style="text-align:left;margin:14px 0"><div class="ic">⚠</div><div>' +
           'This game isn\'t set up for phone joining yet — ask your instructor.</div></div>' : '') +
         '<h3 style="margin:18px 0 6px">Looking for room <span class="mono">' + esc(code) + '</span>…</h3>' +
-        '<div class="hint">Make sure your instructor has the host screen open.' +
-        (liveMode() ? '' : '<br><br><b>Local mode:</b> this join link only works in another tab on the host computer.') + '</div>' +
+        (PLAYER_STALLED && liveMode()
+          ? '<div class="fbwarn" style="text-align:left;margin:14px 0"><div class="ic">⚠</div><div>' +
+            '<b>This phone can\'t reach the game server.</b><br>' +
+            'The room is almost certainly fine — it\'s this device\'s connection. ' +
+            'Turn Wi-Fi <b>off</b> and use cellular data, then reload. School Wi-Fi ' +
+            'often blocks <span class="mono">gstatic.com</span>, which the game needs.' +
+            '</div></div>'
+          : '<div class="hint">Make sure your instructor has the host screen open.' +
+            (liveMode() ? '' : '<br><br><b>Local mode:</b> this join link only works in another tab on the host computer.') + '</div>') +
         '<button class="btn sm ghost" data-act="recode" style="margin-top:14px">Enter a different code</button></div></div>';
       return;
     }
@@ -1816,7 +1824,20 @@ function Player(code, seat) {
   });
 
   render();
-  T.playerInit(onPub, onTimer);
+  /* If the transport can't connect, say so on the player's screen. Without
+     this the promise rejected silently and the student stared at
+     "Looking for room …" with no idea why. */
+  var gotPub = false;
+  T.playerInit(function (p) { gotPub = true; onPub(p); }, onTimer)
+    .catch(function (err) {
+      console.error(err);
+      PLAYER_STALLED = true;
+      render();
+    });
+  /* Nothing errored but nothing arrived either — still worth explaining. */
+  setTimeout(function () {
+    if (!gotPub) { PLAYER_STALLED = true; render(); }
+  }, 9000);
   tickHandle = setInterval(paint, 100);
   window.__FO_PLAYER = { send: send, me: me, get pub() { return P; } };
 

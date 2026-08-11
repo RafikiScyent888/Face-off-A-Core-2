@@ -11,7 +11,7 @@
 window.FACEOFF_FIREBASE = {
   enabled: true,
 
-  config: {
+  config: { 
     apiKey: "AIzaSyCHgdXXUQngfZNtu9saeE-tJFBWYLUMhUs",
     authDomain: "face-off-games.firebaseapp.com",
     databaseURL: "https://face-off-games-default-rtdb.firebaseio.com",

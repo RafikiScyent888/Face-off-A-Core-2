@@ -990,7 +990,6 @@ function Host(forcedCode) {
           '<h2 style="margin:0;font-size:22px">Teams <span style="opacity:.6;font-weight:600;font-size:15px">' + total +
             ' / ' + (S.settings.teamCount * S.settings.teamSize) + ' seats filled</span></h2>' +
           '<div class="spacer"></div>' +
-          '<button class="btn sm" data-act="demo">Fill demo teams</button>' +
           '<button class="btn primary" data-act="start">Start Game →</button>' +
         '</div>' +
         '<div class="tgrid">' + S.teams.map(function (t) {
@@ -1315,6 +1314,29 @@ function Host(forcedCode) {
     '</div></div>';
   }
 
+  /* Largest font size at which the whole clue still fits the space it has.
+     Long clues on a short window would otherwise be clipped, and a clue the
+     room can't finish reading is worse than a small one. */
+  function fitClue() {
+    var box = $('.qbox'), t = $('.qtext');
+    if (!box || !t) return;
+    /* clientHeight INCLUDES padding — measuring against it overshoots by a
+       whole line, which is what kept clipping the last line of long clues */
+    var cs = getComputedStyle(box);
+    var avail = box.clientHeight - parseFloat(cs.paddingTop || 0)
+                                 - parseFloat(cs.paddingBottom || 0) - 2;
+    var lo = 12, hi = 76, best = lo, mid, i;
+    for (i = 0; i < 14; i++) {
+      mid = (lo + hi) / 2;
+      t.style.fontSize = mid + 'px';
+      /* measure the TEXT against the BOX — t.scrollHeight only reports the
+         text overflowing itself, which it never does, so it always passed */
+      if (t.getBoundingClientRect().height <= avail) { best = mid; lo = mid; }
+      else { hi = mid; }
+    }
+    t.style.fontSize = best.toFixed(1) + 'px';
+  }
+
   function _render() {
     var body;
     if (S.phase === 'lobby') body = topbar() + lobbyView();
@@ -1331,6 +1353,7 @@ function Host(forcedCode) {
       if (q && window.QR) QR.render(q, location.origin + location.pathname + '#/play/' + S.room, 230, '#ffffff', '#0f1f4d');
     }
     paintTimer();
+    fitClue();
   }
 
   /* ---------- events ---------- */
@@ -1402,7 +1425,6 @@ function Host(forcedCode) {
           .then(function () { flash('Join link copied', 'good'); }, function () { prompt('Copy this link:', u); });
         break;
       case 'newcode': location.reload(); break;
-      case 'demo':    demoTeams(); break;
       case 'ok':      judge(true); break;
       case 'no':      judge(false); break;
       case 'show':    revealNow(); break;
@@ -1434,6 +1456,7 @@ function Host(forcedCode) {
   }
   app.addEventListener('click', onClick);
   document.addEventListener('keydown', onKey);
+  window.addEventListener('resize', fitClue);
 
   T.hostInit(onAction).then(sync, function (err) {
     console.error(err);

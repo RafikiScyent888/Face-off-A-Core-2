@@ -335,7 +335,7 @@ Any current Chrome, Edge, Firefox, or Safari, desktop or mobile. Sound uses the
 Web Audio API — on some phones the first tap unlocks it, which the join button
 handles.
 
-## Troubleshooting
+## Troubleshooting 
 
 **Students stuck on "Looking for room…"** — you're in Local Mode. See
 `FIREBASE-SETUP.md`. If you're already in Live Mode, the school network is

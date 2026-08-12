@@ -203,7 +203,7 @@ Clue shape, if you ever hand-edit:
 ### What's in there now
 
 **619 board questions** across **26 categories** — one per 220-1202
-sub-objective — plus **38 Lightning Final questions**:
+sub-objective — plus **46 Lightning Final questions**:
 
 | Domain | Categories |
 |---|---|
@@ -218,15 +218,18 @@ tournament needs — **zero repeats**, whatever length you run.
 
 ---
 
-## The answer key on the host screen
+## Running the game
+
+### The answer key on the host screen
 
 The host screen never shows the answer on its own. Two things follow from that:
 
 - **The answer key is covered.** The strip along the bottom of a live clue
   reads `Host only — ANSWER HIDDEN` until you click **👁 Reveal answer** (or
-  press **A**). Handy when the host screen is mirrored to a projector, shared
-  in a call, or just visible over your shoulder. It re-covers itself on the
-  next clue.
+  press **A**). The button becomes **🙈 Hide answer**, so you can check the key
+  and put it straight back — useful when the host screen is mirrored to a
+  projector, shared in a call, or just visible over your shoulder. It re-covers
+  itself on the next clue either way.
 - **You see the question, not the typing.** While a team is on the clock the
   host screen shows the clue and the timer, nothing more. Their answer appears
   the moment they submit it — keystrokes were never transmitted, so there was
@@ -234,6 +237,80 @@ The host screen never shows the answer on its own. Two things follow from that:
 
 Revealing the key is **host-side only**: students' devices are not told, and
 the answer still only reaches them when you hit **Show answer & move on**.
+
+### Shuffling the teams
+
+**🔀 Shuffle members** in the lobby redeals every student who has joined across
+the teams at random. Team sizes stay within one of each other, captains are
+reassigned to whoever lands first on each team, and nobody has to rejoin —
+students' phones follow them to their new team on their own. Use it to break up
+the friends who all piled into Team 1.
+
+### How many rounds get played
+
+With **three or more teams** the bracket works out its own length: the bottom
+two teams are eliminated after each board until two remain, who meet in the
+Lightning Final.
+
+With **exactly two teams** there is nobody to eliminate, so you say how long the
+game runs. **Rounds before the final** in Game settings sets how many boards are
+played head-to-head before the Lightning Final — no elimination screens in
+between. The field is greyed out at any other team count, where the bracket
+still decides.
+
+### Class vs Class runs as duels
+
+Tick **Class vs Class** and the tournament becomes a cross-class knockout
+rather than a free-for-all.
+
+- **Every team is matched one against one across the classes.** Best in Class A
+  faces best in Class B, second faces second, and so on. Matchups are re-seeded
+  at the start of every round, so they stay level as the field shrinks.
+- **Each clue belongs to one matchup, and only those two teams may buzz.**
+  Clues rotate through the matchups in order, so every duel gets the same
+  number. The board shows the full matchup rail with the one that is up next
+  lit; students who aren't in it see `NOT YOUR MATCHUP` on their buzzer. A
+  steal after a wrong answer opens to the opponent only, not the room.
+- **The loser of each matchup is eliminated.** Both classes halve every round
+  down to one champion apiece, who meet in the Lightning Final. The standings
+  screen shows the matchups head-to-head; click a team to flip which side of
+  its duel goes out.
+
+An odd team out draws a **BYE** — it sits the round out and can't be
+eliminated. If one class sweeps a round and wipes the other out entirely, that
+class has won the class battle, and its survivors play down to the last two for
+the final.
+
+### Not repeating questions
+
+Used clues are remembered **across tournaments**, not just within one. The
+memory is kept in the host browser, so a class can play several games back to
+back — and the host can reload the projector mid-class — without seeing a
+question twice.
+
+Each board also picks its clues at random from within each row's slice of the
+category's difficulty ramp, and the categories are redealt in a new order every
+tournament. So two teachers starting a fresh game don't get the same board
+either.
+
+**Game settings** shows how much of the pool is left, with a **Reset pool**
+button to put all 619 clues back. The pool recycles on its own once it runs
+dry — with the default 8 teams at 60 minutes that is about **11 tournaments**
+of completely repeat-free play.
+
+The memory lives in that browser's local storage under a key of its own, so
+this game does not tread on the other Face-Off games hosted from the same site
+(they all share one origin, and they used to share one key). A different
+computer, a different browser, or a cleared cache starts fresh.
+
+### On the students' phones
+
+- **Enter submits.** Enter sends the answer, Shift+Enter makes a new line. The
+  Submit button still works; it was often hidden under the phone keyboard.
+  Enter also submits the name, team name, and wager boxes.
+- **The answer box clears itself.** Anything half-typed when the host moves on
+  is dropped, so the next question opens on an empty box instead of last
+  question's answer waiting to be sent by reflex.
 
 ## Files
 

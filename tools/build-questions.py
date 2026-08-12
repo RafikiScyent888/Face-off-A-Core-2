@@ -178,7 +178,7 @@ def render(cats, lightning):
         out.append("\n  ]}%s\n" % ("," if n < len(cats) else ""))
 
     out.append("""
-  ],
+  ], 
 
   /* =====================================================================
      LIGHTNING FINAL — head-to-head between the last two teams.

@@ -164,7 +164,7 @@ window.FACEOFF_QUESTIONS = {
 '''
 
 
-def render(cats, lightning):
+def render(cats, lightning): 
     out = [HEADER % (len(cats), len(cats))]
     for n, cat in enumerate(cats, 1):
         out.append("\n  /* ============ %d · %s ============ */\n" % (n, cat["domain"]))
